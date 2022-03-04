@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "3b505aff-1d32-4f7c-9bd5-648c84537ccf",
+		"name": "excel-poc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ReadExcel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/excel",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"excel"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
