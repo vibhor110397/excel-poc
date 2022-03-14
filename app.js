@@ -2,15 +2,19 @@ var createError = require('http-errors');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var fileUpload = require('express-fileupload');
+var bodyParser = require('body-parser')
 var indexRouter = require('./src/routes/index');
 
 var app = express();
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(logger('dev'));
-app.use(express.json());
+// app.use(express.json({limit: '1000mb'}));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(fileUpload());
 
 app.use(indexRouter);
 
@@ -27,7 +31,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send(err);
 });
 
 module.exports = app;
